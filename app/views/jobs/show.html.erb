@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Job #<%= @the_job.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/jobs">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_job/<%= @the_job.id %>">
+          Delete job
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_job.title %>
+      </dd>
+
+      <dt>
+        Company
+      </dt>
+      <dd>
+        <%= @the_job.company_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_job.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_job.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_job.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit job
+    </h2>
+
+    <form action="/modify_job/<%= @the_job.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_job.title %>">
+      </div>
+
+      <div>
+        <label for="company_id_box">
+          Company
+        </label>
+
+        <input type="text" id="company_id_box" name="query_company_id" value="<%= @the_job.company_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_job.user_id %>">
+      </div>
+
+      <button>
+        Update job
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

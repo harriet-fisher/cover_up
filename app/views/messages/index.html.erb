@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all messages
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new message
+    </h2>
+
+    <form action="/insert_message" method="post">
+      <div>
+        <label for="job_body_box">
+          Job body
+        </label>
+
+        <textarea id="job_body_box" name="query_job_body" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="company_body_box">
+          Company body
+        </label>
+
+        <textarea id="company_body_box" name="query_company_body" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="company_name_box">
+          Company name
+        </label>
+
+        <input type="text" id="company_name_box" name="query_company_name">
+      </div>
+
+      <div>
+        <label for="message_body_box">
+          Message body
+        </label>
+
+        <textarea id="message_body_box" name="query_message_body" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Job body
+        </th>
+
+        <th>
+          Company body
+        </th>
+
+        <th>
+          Company name
+        </th>
+
+        <th>
+          Message body
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_messages.each do |a_message| %>
+      <tr>
+        <td>
+          <%= a_message.id %>
+        </td>
+
+        <td>
+          <%= a_message.job_body %>
+        </td>
+
+        <td>
+          <%= a_message.company_body %>
+        </td>
+
+        <td>
+          <%= a_message.company_name %>
+        </td>
+
+        <td>
+          <%= a_message.message_body %>
+        </td>
+
+        <td>
+          <%= a_message.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_message.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_message.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/messages/<%= a_message.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

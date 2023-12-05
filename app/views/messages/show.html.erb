@@ -1,0 +1,149 @@
+<div>
+  <div>
+    <h1>
+      Message #<%= @the_message.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/messages">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_message/<%= @the_message.id %>">
+          Delete message
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Job body
+      </dt>
+      <dd>
+        <%= @the_message.job_body %>
+      </dd>
+
+      <dt>
+        Company body
+      </dt>
+      <dd>
+        <%= @the_message.company_body %>
+      </dd>
+
+      <dt>
+        Company name
+      </dt>
+      <dd>
+        <%= @the_message.company_name %>
+      </dd>
+
+      <dt>
+        Message body
+      </dt>
+      <dd>
+        <%= @the_message.message_body %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_message.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit message
+    </h2>
+
+    <form action="/modify_message/<%= @the_message.id %>"  method="post" >
+      <div>
+        <label for="job_body_box">
+          Job body
+        </label>
+
+        <textarea id="job_body_box" name="query_job_body"><%= @the_message.job_body %></textarea>
+      </div>
+
+      <div>
+        <label for="company_body_box">
+          Company body
+        </label>
+
+        <textarea id="company_body_box" name="query_company_body"><%= @the_message.company_body %></textarea>
+      </div>
+
+      <div>
+        <label for="company_name_box">
+          Company name
+        </label>
+
+        <input type="text" id="company_name_box" name="query_company_name" value="<%= @the_message.company_name %>">
+      </div>
+
+      <div>
+        <label for="message_body_box">
+          Message body
+        </label>
+
+        <textarea id="message_body_box" name="query_message_body"><%= @the_message.message_body %></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_message.user_id %>">
+      </div>
+
+      <button>
+        Update message
+      </button>
+    </form>
+  </div>
+</div>
+
+  <h1>Message Details</h1>
+
+  <!-- Displaying details of the message -->
+  <p>
+    <strong>Company Name:</strong>
+    <%= @the_message.company_name %>
+  </p>
+  <p>
+    <strong>Company Description:</strong>
+    <%= @the_message.company_body %>
+  </p>
+  <!-- Include other details as needed -->
+
+  <!-- Displaying the response from OpenAI -->
+  <h2>Response from OpenAI</h2>
+  <%= @response %>
+
+
+<hr>

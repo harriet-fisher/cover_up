@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all jobs
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new job
+    </h2>
+
+    <form action="/insert_job" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="company_id_box">
+          Company
+        </label>
+
+        <input type="text" id="company_id_box" name="query_company_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create job
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Company
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_jobs.each do |a_job| %>
+      <tr>
+        <td>
+          <%= a_job.id %>
+        </td>
+
+        <td>
+          <%= a_job.title %>
+        </td>
+
+        <td>
+          <%= a_job.company_id %>
+        </td>
+
+        <td>
+          <%= a_job.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_job.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_job.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/jobs/<%= a_job.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

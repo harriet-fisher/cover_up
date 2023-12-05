@@ -1,0 +1,14 @@
+.start-button {
+  background-color: lightblue;  /* Light blue background */
+  color: black;                /* Text color */
+  font-family: Arial, sans-serif; /* Arial, bold font */
+  font-weight: bold;           /* Make the font bold */
+  border: none;                /* Remove border */
+  padding: 10px 20px;          /* Padding around the text */
+  text-align: center;          /* Center the text */
+  text-decoration: none;       /* Remove underline from text */
+  display: inline-block;       /* Display style */
+  font-size: 16px;             /* Font size */
+  margin: 4px 2px;             /* Margin around the button */
+  cursor: pointer;             /* Cursor to pointer when hover over the button */
+}

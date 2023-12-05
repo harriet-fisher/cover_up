@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Company #<%= @the_company.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/companies">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_company/<%= @the_company.id %>">
+          Delete company
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_company.title %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_company.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_company.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_company.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit company
+    </h2>
+
+    <form action="/modify_company/<%= @the_company.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_company.title %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_company.user_id %>">
+      </div>
+
+      <button>
+        Update company
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
