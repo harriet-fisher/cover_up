@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   end
 
   def send_to_openai(prompt)
-    client = OpenAI::Client.new(api_key: ENV['OPENAI_API_KEY'])
+    client = OpenAI::Client.new(api_key: ENV.fetch("OPEN_AI_KEY"))
 
     thread = client.beta.threads.create()
 
