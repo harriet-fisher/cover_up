@@ -57,8 +57,8 @@ class MessagesController < ApplicationController
     the_message.user_id = params.fetch("query_user_id")
 
     if params[:uploaded_cv]
-      s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
-      obj = s3.bucket(ENV['AWS_BUCKET']).object("uploads/#{SecureRandom.uuid}/#{params[:uploaded_cv].original_filename}")
+      s3 = Aws::S3::Resource.new(region: ENV.fetch("AWS_REGION"))
+      obj = s3.bucket(ENV.fetch("AWS_BUCKET")).object("uploads/#{SecureRandom.uuid}/#{params[:uploaded_cv].original_filename}")
       obj.upload_file(params[:uploaded_cv].tempfile, acl: 'private')
       uploaded_file_url = obj.public_url
       the_message.resume = uploaded_file_url
