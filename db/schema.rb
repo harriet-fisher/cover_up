@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_05_082122) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_030659) do
   create_table "companies", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_082122) do
     t.text "resume"
     t.integer "job_id"
     t.integer "company_id"
+    t.string "role"
   end
 
   create_table "users", force: :cascade do |t|

@@ -8,6 +8,7 @@
 #  job_body     :text
 #  message_body :text
 #  resume       :text
+#  role         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  company_id   :integer

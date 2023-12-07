@@ -20,32 +20,9 @@ class MessagesController < ApplicationController
     @prompt += "company description: #{@the_message.company_body}\n"
     @prompt += "job description: #{@the_message.job_body}\n"
     @prompt += "current cover letter: #{@the_message.message_body}\n"
-    @prompt += "current experience available at: #{@the_message.resume}"
-
-    @response = send_to_openai(@prompt)
+    @cv = @the_message.resume
 
     render({ :template => "messages/show" })
-  end
-
-  def send_to_openai(prompt)
-    client = OpenAI::Client.new(api_key: ENV.fetch("OPEN_AI_KEY"))
-
-    thread = client.beta.threads.create()
-
-    message = client.beta.threads.messages.create(
-    thread_id=thread.id,
-    role="user",
-    content=@prompt)
-
-    run = client.beta.threads.runs.create(
-    thread_id=thread.id,
-    assistant_id=asst_FhPRmOWyLQXB0xdLuDgSblZG,
-    instructions="Please address the user as #{current_user.full_name}."
-    )
-
-    response = client.beta.threads.messages.list(
-    thread_id=thread.id
-    )
   end
 
   def create
@@ -55,20 +32,14 @@ class MessagesController < ApplicationController
     the_message.company_name = params.fetch("query_company_name")
     the_message.message_body = params.fetch("query_message_body")
     the_message.user_id = params.fetch("query_user_id")
-
-    if params[:uploaded_cv]
-      s3 = Aws::S3::Resource.new(region: ENV.fetch("AWS_REGION"))
-      obj = s3.bucket(ENV.fetch("AWS_BUCKET")).object("uploads/#{SecureRandom.uuid}/#{params[:uploaded_cv].original_filename}")
-      obj.upload_file(params[:uploaded_cv].tempfile, acl: 'private')
-      uploaded_file_url = obj.public_url
-      the_message.resume = uploaded_file_url
-    end
+    the_message.role = params.fetch("query_role")
+    the_message.resume = params.fetch("uploaded_cv")
 
     if the_message.valid?
       the_message.save
-      redirect_to("/messages/#{the_message.id}", { :notice => "Message sent successfully." })
+      redirect_to("/generate/#{the_message.id}", { :notice => "Message sent successfully." })
     else
-      redirect_to("/messages", { :alert => the_message.errors.full_messages.to_sentence })
+      redirect_to("/start", { :alert => the_message.errors.full_messages.to_sentence })
     end
   end
 

@@ -35,6 +35,7 @@
     <%= file_field_tag 'uploaded_cv', id: 'file_input', class: 'form-control' %>
   </div>
     <%= hidden_field_tag 'query_user_id', current_user.id %>
+    <%= hidden_field_tag 'query_role', "user" %>
 
     <br>
     <%= submit_tag "Submit", class: "btn btn-primary" %>

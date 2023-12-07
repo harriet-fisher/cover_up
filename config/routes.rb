@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   root "home#index"
   get("/", {:controller => "home", :action => "index"})
   get("/start", {:controller => "home", :action => "start"})
+  get("/generate/:path_id", { :controller => "home", :action => "generate" })
   get("/user", {:controller => "home", :action => "user"})
   
 end

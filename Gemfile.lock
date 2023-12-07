@@ -75,22 +75,6 @@ GEM
     appdev_support (0.2.1)
       tabulo
     awesome_print (1.9.2)
-    aws-eventstream (1.3.0)
-    aws-partitions (1.863.0)
-    aws-sdk-core (3.190.0)
-      aws-eventstream (~> 1, >= 1.3.0)
-      aws-partitions (~> 1, >= 1.651.0)
-      aws-sigv4 (~> 1.8)
-      jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.74.0)
-      aws-sdk-core (~> 3, >= 3.188.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.141.0)
-      aws-sdk-core (~> 3, >= 3.189.0)
-      aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.8)
-    aws-sigv4 (1.8.0)
-      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.18)
     better_errors (2.9.1)
@@ -148,12 +132,15 @@ GEM
       color_namer
       rspec
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
     faker (3.1.1)
       i18n (>= 1.8.11, < 2)
     faraday (2.7.11)
       base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
     faraday-net_http (3.0.2)
     faraday-retry (1.0.3)
     ffi (1.15.5)
@@ -194,7 +181,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jmespath (1.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -224,6 +210,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.20.0)
     msgpack (1.7.0)
+    multipart-post (2.3.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     net-imap (0.3.4)
@@ -336,6 +323,10 @@ GEM
     rspec-support (3.12.0)
     ruby-graphviz (1.2.5)
       rexml
+    ruby-openai (6.3.1)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     rufo (0.16.0)
@@ -424,7 +415,6 @@ DEPENDENCIES
   annotate
   appdev_support
   awesome_print
-  aws-sdk-s3
   better_errors
   binding_of_caller
   bootsnap
@@ -449,6 +439,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-html-matchers
   rspec-rails (~> 6.0.0)
+  ruby-openai
   rufo
   selenium-webdriver
   specs_to_readme
