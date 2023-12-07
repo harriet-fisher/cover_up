@@ -1,4 +1,3 @@
-require 'aws-sdk-s3'
 class MessagesController < ApplicationController
   def index
     matching_messages = Message.all
@@ -23,6 +22,19 @@ class MessagesController < ApplicationController
     @cv = @the_message.resume
 
     render({ :template => "messages/show" })
+  end
+
+  def cover
+    the_id = params.fetch("request_id")
+    the_response_id = params.fetch("response_id")
+
+    matching_requests = Message.where({ :id => the_id })
+    @the_request = matching_requests.at(0)
+
+    matching_response = Message.where({:id => the_response_id})
+    @the_response = matching_response.at(0)
+
+    render({ :template => "messages/coverletter" })
   end
 
   def create

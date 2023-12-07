@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get("/messages", { :controller => "messages", :action => "index" })
   
   get("/messages/:path_id", { :controller => "messages", :action => "show" })
+
+  get("/messages/new/:request_id/:response_id", { :controller => "messages", :action => "cover" })
   
   # UPDATE
   

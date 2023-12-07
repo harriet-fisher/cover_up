@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_07_030659) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_220526) do
   create_table "companies", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
@@ -47,6 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_030659) do
     t.integer "job_id"
     t.integer "company_id"
     t.string "role"
+    t.integer "message_id"
+    t.index ["message_id"], name: "index_messages_on_message_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_030659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "messages"
 end

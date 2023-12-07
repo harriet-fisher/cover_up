@@ -13,7 +13,16 @@
 #  updated_at   :datetime         not null
 #  company_id   :integer
 #  job_id       :integer
+#  message_id   :integer
 #  user_id      :integer
+#
+# Indexes
+#
+#  index_messages_on_message_id  (message_id)
+#
+# Foreign Keys
+#
+#  message_id  (message_id => messages.id)
 #
 class Message < ApplicationRecord
 end
