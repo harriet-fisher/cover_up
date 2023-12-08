@@ -4,20 +4,44 @@
     <title>Cover Up</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      nav {
+        display: flex;
+        justify-content: space-around;
+        background-color: #f8f9fa;
+        padding: 10px 0;
+      }
+      .menu-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 200px;
+        box-sizing: border-box;
+      }
+    </style>
   </head>
 
   <body>
     <nav>
-      <a href="/">Home</a>
+      <a class="menu-btn" href="/">Home</a>
       <% if current_user.present? %>
-        <a href="/users/edit">Edit Profile</a>
-        <a href="/user/show">My Cover Letters</a>
-        <a href="/users/sign_out">Sign out</a>
+        <a class="menu-btn" href="/users/edit">Edit Profile</a>
+        <a class="menu-btn" href="/user/show">My Cover Letters</a>
+        <a class="menu-btn" href="/users/sign_out">Sign out</a>
       <% else %>
-        <a href="/users/sign_up">Sign up</a>
-        <a href="/users/sign_in">Sign in</a>
+        <a class="menu-btn" href="/users/sign_up">Sign up</a>
+        <a class="menu-btn" href="/users/sign_in">Sign in</a>
       <% end %>
     </nav>
+    <hr>
     <%= yield %>
     <br>
   </body>
