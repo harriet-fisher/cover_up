@@ -78,23 +78,19 @@ class HomeController < ApplicationController
         end
       end
 
-      message_number = 3
-      assistant_messages.each do |message|
-        text_value = message.fetch("content").at(0).fetch("text").fetch("value")
-        text_value = text_value.gsub("---", "\n")
-        new_response = Response.new
-        new_response.message_id = @the_message.id
-        new_response.user_id = @the_message.user_id
-        new_response.body = text_value
-        new_response.response_number = message_number
-        new_response.save
-        message_number -= 1
-      end
+      text_value = assistant_messages.at(0).fetch("content").at(0).fetch("text").fetch("value")
+      new_response = Response.new
+      new_response.message_id = @the_message.id
+      new_response.user_id = @the_message.user_id
+      new_response.body = text_value
+      new_response.response_number = 3
+      new_response.save
+
       @the_message.resume.purge
+      @the_message.message_id = new_response.id
       @the_message.save
       client.files.delete(id:@cv_id)
     end
-    render({:template => "home/test"})
-    redirect_to("/messages/new/#{@the_message.id}")
+    redirect_to("/cover/#{@the_message.id}")
   end
 end

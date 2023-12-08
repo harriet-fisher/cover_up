@@ -105,6 +105,6 @@ Rails.application.routes.draw do
   get("/", {:controller => "home", :action => "index"})
   get("/start", {:controller => "home", :action => "start"})
   get("/generate/:path_id", { :controller => "home", :action => "generate" })
-  get("/user", {:controller => "home", :action => "user"})
+  get("/user/show", {:controller => "user", :action => "show"})
   
 end

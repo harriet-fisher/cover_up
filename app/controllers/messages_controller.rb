@@ -30,9 +30,8 @@ class MessagesController < ApplicationController
     matching_requests = Message.where({ :id => the_id })
     @the_request = matching_requests.at(0)
 
-    @company_job_analysis = Response.where({ :id => the_response_id, :response_number => 1 })
-    @resume_analysis = Response.where({ :id => the_response_id, :response_number => 2 })
-    @cover_letter = Response.where({ :id => the_response_id, :response_number => 3 })
+    m3 = Response.where({:message_id => the_id})
+    @cover_letter = m3.at(0)
 
     render({ :template => "messages/coverletter" })
   end
@@ -40,6 +39,7 @@ class MessagesController < ApplicationController
   def create
     the_message = Message.new
     the_message.job_body = params.fetch("job_body")
+    the_message.job_title = params.fetch("job_title")
     the_message.company_body = params.fetch("company_body")
     the_message.company_name = params.fetch("company_name")
     the_message.message_body = params.fetch("message_body")

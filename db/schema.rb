@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_08_011532) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_08_033257) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_08_011532) do
     t.integer "company_id"
     t.string "role"
     t.integer "message_id"
+    t.string "job_title"
     t.index ["message_id"], name: "index_messages_on_message_id"
   end
 

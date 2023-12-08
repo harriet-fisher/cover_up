@@ -6,6 +6,7 @@
 #  company_body :text
 #  company_name :string
 #  job_body     :text
+#  job_title    :string
 #  message_body :text
 #  resume       :text
 #  role         :string

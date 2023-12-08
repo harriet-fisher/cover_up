@@ -10,20 +10,24 @@
   <h1>Get Ready to Cover Up</h1>
 
   <%= form_with(url: "/send_message", method: :post, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :job_title, 'Job Title', class: 'form-control-label' %>
+      <%= form.text_area :job_title, id: 'job_title', class: 'form-control', rows: 3, value: "Analyst" %>
+    </div>
 
     <div class="form-group">
       <%= form.label :job_body, 'Job Description', class: 'form-control-label' %>
-      <%= form.text_area :job_body, id: 'job_body', class: 'form-control', rows: 3 %>
+      <%= form.text_area :job_body, id: 'job_body', class: 'form-control', rows: 3, value: "Scope of Responsibilities:\n\nPlan and implement projects\nHelp define project scope, goals and deliverables\nDefine tasks and required resources\nCreate schedule and project timeline\nTrack deliverables\nSupport and direct team\nManage and monitor end-to-end projects\nPresent to stakeholders reports on progress as well as problems and suggest solutions\nImplement and manage change when necessary to meet project outputs\nEvaluate and assess result of project\nInteract and manage third party companies (vendors/suppliers)\n\nBasic Qualifications:\n\nPursing a Bachelor's degree or higher with a marketing or related major\n\nPreferred Qualifications:\n\nPrevious experience with sales, social media\nProject management and organizational skills: Takes initiative to take on new tasks and improve organization in the business.\nExcellent communication and interpersonal skills (Collaborates with colleagues and partners at all levels, doesn’t hesitate to lead calls and provide direction to the team)\nAdvanced skills in Microsoft Office, especially Excel\nAnalytical Thinking" %>
     </div>
 
     <div class="form-group">
       <%= form.label :company_name, 'Company Name', class: 'form-control-label' %>
-      <%= form.text_area :company_name, id: 'company_name', class: 'form-control', rows: 3 %>
+      <%= form.text_area :company_name, id: 'company_name', class: 'form-control', rows: 3, value: "Motorola" %>
     </div>
 
     <div class="form-group">
       <%= form.label :company_body, 'Company Description', class: 'form-control-label' %>
-      <%= form.text_area :company_body, id: 'company_body', class: 'form-control', rows: 3 %>
+      <%= form.text_area :company_body, id: 'company_body', class: 'form-control', rows: 3, value: "Motorola Mobility (a Lenovo company) is one of the world's fastest growing smartphone providers, creating groundbreaking, affordable, high-quality products designed and built with the global customer in mind. And it's our people who make this all happen. We are thinkers, risk-takers and problem solvers, working together to constantly challenge the status quo. If you share our commitment to ingenuity, creativity and innovation, we want you to help us define our world of tomorrow. Explore the opportunities and apply today!" %>
     </div>
 
     <div class="form-group">

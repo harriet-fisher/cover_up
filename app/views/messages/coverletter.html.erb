@@ -8,13 +8,11 @@
   </head>
 <body>
   <h3>Your Request:</h3>
-  <p><strong>Company Name </strong> <%= @the_request.company_name %></p>
+  <p><strong>Company Name: </strong> <%= @the_request.company_name %></p>
+  <p><strong>Job Title: </strong> <%= @the_request.job_title %></p>
   <p><strong>Job Description: </strong> <%= @the_request.job_body %></p>
   <br>
-  <h3>Company & Job Analysis</h3
-  <p><%= @company_job_analysis %></p>
   <h1>Your New Cover Letter</h1>
-  <p>Dear <%= @the_response.company_name %>,</p>
-  <p><%= the_response.message_body %></p>
+  <p><%= @cover_letter.body %></p>
 </body>
 </html>

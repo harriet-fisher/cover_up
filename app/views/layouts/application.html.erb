@@ -10,7 +10,8 @@
     <nav>
       <a href="/">Home</a>
       <% if current_user.present? %>
-        <a href="/users/edit">Edit profile</a>
+        <a href="/users/edit">Edit Profile</a>
+        <a href="/user/show">My Cover Letters</a>
         <a href="/users/sign_out">Sign out</a>
       <% else %>
         <a href="/users/sign_up">Sign up</a>
