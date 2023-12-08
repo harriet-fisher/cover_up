@@ -10,10 +10,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        height: 100vh;
         text-align: center;
-        margin-top: -50px;
       }
       .form-container {
         max-width: 800px;
@@ -26,24 +23,24 @@
     </style>
   </head>
 <body>
-  <h1 class="center-text">Get Ready to Cover Up</h1>
+  <div class="centered-content"><%= image_tag "lets_cover_up.png", height: 150 %></div>
 
   <% if current_user %>
     <div class="form-container">
       <%= form_with(url: "/send_message", method: :post, local: true) do |form| %>
         <div class="form-group">
           <%= form.label :job_title, 'Job Title', class: 'form-control-label' %>
-          <%= form.text_area :job_title, id: 'job_title', class: 'form-control', rows: 3, value: "Analyst" %>
+          <%= form.text_area :job_title, id: 'job_title', class: 'form-control', rows: 1, value: "Analyst" %>
         </div>
 
         <div class="form-group">
           <%= form.label :job_body, 'Job Description', class: 'form-control-label' %>
-          <%= form.text_area :job_body, id: 'job_body', class: 'form-control', rows: 3, value: "Scope of Responsibilities:\n\nPlan and implement projects\nHelp define project scope, goals and deliverables\nDefine tasks and required resources\nCreate schedule and project timeline\nTrack deliverables\nSupport and direct team\nManage and monitor end-to-end projects\nPresent to stakeholders reports on progress as well as problems and suggest solutions\nImplement and manage change when necessary to meet project outputs\nEvaluate and assess result of project\nInteract and manage third party companies (vendors/suppliers)\n\nBasic Qualifications:\n\nPursing a Bachelor's degree or higher with a marketing or related major\n\nPreferred Qualifications:\n\nPrevious experience with sales, social media\nProject management and organizational skills: Takes initiative to take on new tasks and improve organization in the business.\nExcellent communication and interpersonal skills (Collaborates with colleagues and partners at all levels, doesn’t hesitate to lead calls and provide direction to the team)\nAdvanced skills in Microsoft Office, especially Excel\nAnalytical Thinking" %>
+          <%= form.text_area :job_body, id: 'job_body', class: 'form-control', rows: 3, value: "Scope of Responsibilities:\nPlan and implement projects\nHelp define project scope, goals and deliverables\nDefine tasks and required resources\nCreate schedule and project timeline\nTrack deliverables\nSupport and direct team\nManage and monitor end-to-end projects\nPresent to stakeholders reports on progress as well as problems and suggest solutions\nImplement and manage change when necessary to meet project outputs\nEvaluate and assess result of project\nInteract and manage third party companies (vendors/suppliers)\n\nBasic Qualifications:\n\nPursing a Bachelor's degree or higher with a marketing or related major\n\nPreferred Qualifications:\nPrevious experience with sales, social media\nProject management and organizational skills: Takes initiative to take on new tasks and improve organization in the business.\nExcellent communication and interpersonal skills (Collaborates with colleagues and partners at all levels, doesn’t hesitate to lead calls and provide direction to the team)\nAdvanced skills in Microsoft Office, especially Excel\nAnalytical Thinking" %>
         </div>
 
         <div class="form-group">
           <%= form.label :company_name, 'Company Name', class: 'form-control-label' %>
-          <%= form.text_area :company_name, id: 'company_name', class: 'form-control', rows: 5, value: "Motorola" %>
+          <%= form.text_area :company_name, id: 'company_name', class: 'form-control', rows: 1, value: "Motorola" %>
         </div>
 
         <div class="form-group">
@@ -65,7 +62,9 @@
         <%= form.hidden_field :role, value: "user" %>
 
         <br>
-        <%= form.submit "Submit", class: "btn btn-primary" %>
+        <div class="centered-content">
+          <%= form.submit "Submit", class: "btn btn-primary" %>
+        </div>
 
       <% end %>
     </div>
