@@ -8,23 +8,29 @@
       nav {
         display: flex;
         justify-content: space-around;
-        background-color: #f8f9fa;
-        padding: 10px 0;
+        background-color: white;
+        padding: 10px;
       }
       .menu-btn {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
+        background-color: white;
+        color: #007bff;
+        border: 2px solid #007bff;
+        padding: 10px 10px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
+        font-size: 12px;
+        font-weight: bold;
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 5px;
-        width: 200px;
+        width: 150px;
         box-sizing: border-box;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .menu-btn:hover {
+        background-color: #007bff;
+        color: white;
       }
     </style>
   </head>

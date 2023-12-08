@@ -87,7 +87,6 @@ class HomeController < ApplicationController
       new_response.save
 
       @the_message.resume.purge
-      @the_message.message_id = new_response.id
       @the_message.save
       client.files.delete(id:@cv_id)
     end
