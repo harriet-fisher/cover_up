@@ -25,4 +25,9 @@
 #  message_id  (message_id => messages.id)
 #
 class Message < ApplicationRecord
+  has_one_attached :resume
+  has_many(:responses,
+    class_name: "Response",
+    foreign_key: "message_id"
+  )
 end

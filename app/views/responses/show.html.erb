@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Response #<%= @the_response.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/responses">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_response/<%= @the_response.id %>">
+          Delete response
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Response number
+      </dt>
+      <dd>
+        <%= @the_response.response_number %>
+      </dd>
+
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @the_response.body %>
+      </dd>
+
+      <dt>
+        Message
+      </dt>
+      <dd>
+        <%= @the_response.message_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_response.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_response.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_response.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit response
+    </h2>
+
+    <form action="/modify_response/<%= @the_response.id %>"  method="post" >
+      <div>
+        <label for="response_number_box">
+          Response number
+        </label>
+
+        <input type="text" id="response_number_box" name="query_response_number" value="<%= @the_response.response_number %>">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body"><%= @the_response.body %></textarea>
+      </div>
+
+      <div>
+        <label for="message_id_box">
+          Message
+        </label>
+
+        <input type="text" id="message_id_box" name="query_message_id" value="<%= @the_response.message_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_response.user_id %>">
+      </div>
+
+      <button>
+        Update response
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

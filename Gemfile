@@ -110,3 +110,4 @@ end
 
 gem "devise"
 gem "ruby-openai"
+gem 'tempfile'
