@@ -20,7 +20,13 @@
       }
       .center-text {
       text-align: center;
-    }
+      }
+      .profile-image {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
     </style>
   </head>
   <body>
@@ -30,6 +36,17 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="form-container">
+        <div class="centered-content">
+          <% if resource.profile_picture.attached? %>
+            <%= image_tag resource.profile_picture, class: "profile-image" %>
+          <% else %>
+            <%= image_tag "default-profile-photo.jpg", class: "profile-image" %>
+          <% end %>
+          <div class="field">
+            <%= f.label :profile_picture %><br />
+            <%= f.file_field :profile_picture%>
+          </div>
+        </div>
         <div class="field">
           <%= f.label :full_name %><br />
           <%= f.text_field :full_name %>
@@ -44,6 +61,18 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
+        <div class="centered-content">
+          <div class="field">
+            <%= f.label :current_cv %><br />
+            <% if resource.current_cv.attached? %>
+              <%= link_to resource.current_cv.filename, rails_blob_path(resource.current_cv, disposition: 'attachment') %></br>
+            <% else %>
+              <p>No file attached</p>
+            <% end %>
+            <%= f.file_field :current_cv %>
+          </div>
+        </div>
+        <br>
         <div class="field">
           <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
@@ -63,8 +92,10 @@
           <%= f.password_field :current_password, autocomplete: "current-password" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Update" %>
+        <div class="centered-content">
+          <div class="actions">
+            <%= f.submit "Update" %>
+          </div>
         </div>
       </div>
     <% end %>

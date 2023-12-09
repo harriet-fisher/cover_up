@@ -96,12 +96,13 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
   root "home#index"
+  
   get("/", {:controller => "home", :action => "index"})
   get("/start", {:controller => "home", :action => "start"})
   get("/generate/:path_id", { :controller => "home", :action => "generate" })

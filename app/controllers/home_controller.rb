@@ -19,7 +19,8 @@ class HomeController < ApplicationController
     @prompt += "company name: #{@the_message.company_name}\n"
     @prompt += "company description: #{@the_message.company_body}\n"
     @prompt += "job description: #{@the_message.job_body}\n"
-    @curr_cover = "finally, rewrite my current cover letter to make me appear as the best candidate for the specified job: \n"
+    @prompt += "job title: #{@the_message.job_title}"
+    @curr_cover = "Rewrite my current cover letter to make me appear as the best candidate for the specified job: \n"
     @curr_cover += @the_message.message_body
     @cv = @the_message.resume
   
@@ -85,9 +86,6 @@ class HomeController < ApplicationController
       new_response.body = text_value
       new_response.response_number = 3
       new_response.save
-
-      @the_message.resume.purge
-      @the_message.save
       client.files.delete(id:@cv_id)
     end
     redirect_to("/cover/#{@the_message.id}")

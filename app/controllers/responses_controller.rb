@@ -51,10 +51,18 @@ class ResponsesController < ApplicationController
 
   def destroy
     the_id = params.fetch("path_id")
-    the_response = Response.where({ :id => the_id }).at(0)
+    the_response = Response.where({ :message_id => the_id })
 
-    the_response.destroy
+    the_response.each do |response|
+      response.destroy
+    end
 
-    redirect_to("/responses", { :notice => "Response deleted successfully."} )
+    matching_messages = Message.where({:id => the_id})
+
+    matching_messages.each do |message|
+      message.destroy
+    end
+
+    redirect_to("/user/show", { :notice => "Response deleted successfully."} )
   end
 end
